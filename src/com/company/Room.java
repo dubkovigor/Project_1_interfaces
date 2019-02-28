@@ -9,7 +9,6 @@ public class Room implements Light, Space {
     private final int table;
     private final int chair;
 
-
     public Room(String room,int areabuild, int bulb, int window, int table, int chair) {
 
         this.room = room;
@@ -20,14 +19,12 @@ public class Room implements Light, Space {
         this.chair = chair;
     }
 
-
     public void getLight()throws LightExeption{
 
         if(window*lightw+bulb*lightb < 400)
             throw new LightExeption("Света мало", window*lightw+bulb*lightb);
         else if (window*lightw + bulb*lightb >4000)
             throw new LightExeption("Света много",window*lightw+bulb*lightb);
-
     }
 
     @Override
@@ -36,7 +33,6 @@ public class Room implements Light, Space {
         if(areabuild*0.7<table*3+chair*2)
             throw new AreaExeption("Столько занимать нельзя", 100*(table*3+chair*2)/areabuild);
     }
-
 
     @Override
     public String toString() {
@@ -53,10 +49,6 @@ public class Room implements Light, Space {
         return sb.toString();
     }
 
-    /**
-     *
-     * */
-
     public static class Builder {
 
         private String room;
@@ -69,37 +61,31 @@ public class Room implements Light, Space {
 
         public Builder setRoom(String room){
             this.room = room;
-
             return this;
         }
 
         public Builder setAreaBuild(int areabuild){
             this.areabuild = areabuild;
-
             return this;
         }
 
         public Builder setBulb(int bulb){
             this.bulb = bulb;
-
             return this;
         }
 
         public Builder setWindow(int window){
             this.window = window;
-
             return this;
         }
 
         public Builder setTable(int table){
             this.table = table;
-
             return this;
         }
 
         public Builder setChair(int chair){
             this.chair = chair;
-
             return this;
         }
 
@@ -109,18 +95,4 @@ public class Room implements Light, Space {
 
     }
 
-}
-
-class AreaExeption extends Exception{
-
-    public AreaExeption(String message, int area){
-        super(message + " " + area);
-    }
-}
-
-class LightExeption extends Exception{
-
-    public LightExeption(String message, int lighting){
-        super(message + " " +lighting);
-    }
 }

@@ -8,6 +8,5 @@ public class Main {
         System.out.println(b1.getBuilderName());
         b1.addRoom(" Помещение №1", 10, 1,1,1,1);
         b1.addRoom(" Помещение №2", 100, 8,3,10,4);
-
     }
 }
