@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.exeption.AreaExeption;
+import com.company.exeption.LightExeption;
+
 public class Main {
 
     public static void main(String[] args) throws AreaExeption, LightExeption {
