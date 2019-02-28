@@ -21,10 +21,10 @@ public class Room implements Light, Space {
 
     public void getLight()throws LightExeption{
 
-        if(window*lightw+bulb*lightb < 400)
-            throw new LightExeption("Света мало", window*lightw+bulb*lightb);
-        else if (window*lightw + bulb*lightb >4000)
-            throw new LightExeption("Света много",window*lightw+bulb*lightb);
+        if(window*lightw+bulb* lightbi < 400)
+            throw new LightExeption("Света мало", window*lightw+bulb* lightbi);
+        else if (window*lightw + bulb* lightbi >4000)
+            throw new LightExeption("Света много",window*lightw+bulb* lightbi);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class Room implements Light, Space {
 
         StringBuilder sb = new StringBuilder();
         sb.append(room).append("\n   ")
-                .append("Освещенность = ").append(bulb*lightb + window*lightw)
+                .append("Освещенность = ").append(bulb* lightbi + window*lightw)
                 .append("(" + window + "окна по 700 лк," + bulb + " лампочек по 200 лк)")
                 .append("\n   Площадь = "+areabuild+"м^2").append(" (занято " + table*size + "м^2, гарантированно свободно " )
                 .append(areabuild-table*size + "м^2)\n   ")
@@ -94,5 +94,4 @@ public class Room implements Light, Space {
         }
 
     }
-
 }
