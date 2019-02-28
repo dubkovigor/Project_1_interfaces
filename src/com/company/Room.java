@@ -1,5 +1,10 @@
 package com.company;
 
+import com.company.exeption.AreaExeption;
+import com.company.exeption.LightExeption;
+import com.company.interfaces.Light;
+import com.company.interfaces.Space;
+
 public class Room implements Light, Space {
 
     private final String room;
@@ -9,17 +14,17 @@ public class Room implements Light, Space {
     private final int table;
     private final int chair;
 
-    public Room(String room,int areabuild, int bulb, int window, int table, int chair) {
+    private Room(Builder builder) {
 
-        this.room = room;
-        this.areabuild = areabuild;
-        this.bulb = bulb;
-        this.window = window;
-        this.table = table;
-        this.chair = chair;
+        this.room = builder.room;
+        this.areabuild = builder.areabuild;
+        this.bulb = builder.bulb;
+        this.window = builder.window;
+        this.table = builder.table;
+        this.chair = builder.chair;
     }
 
-    public void getLight()throws LightExeption{
+    public void getLight()throws LightExeption {
 
         if(window*lightw+bulb* lightbi < 400)
             throw new LightExeption("Света мало", window*lightw+bulb* lightbi);
@@ -28,7 +33,7 @@ public class Room implements Light, Space {
     }
 
     @Override
-    public void getSq() throws AreaExeption{
+    public void getSq() throws AreaExeption {
 
         if(areabuild*0.7<table*3+chair*2)
             throw new AreaExeption("Столько занимать нельзя", 100*(table*3+chair*2)/areabuild);
@@ -49,7 +54,7 @@ public class Room implements Light, Space {
         return sb.toString();
     }
 
-    public static class Builder {
+    static class Builder {
 
         private String room;
         private int areabuild;
@@ -90,7 +95,7 @@ public class Room implements Light, Space {
         }
 
         public Room build() {
-            return new Room(room, areabuild, bulb, window, table, chair);
+            return new Room(this);
         }
 
     }
